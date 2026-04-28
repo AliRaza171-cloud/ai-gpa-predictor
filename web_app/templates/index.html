@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="card">
+
+        <h2 style="text-align:center;">AI GPA Predictor</h2>
+
+        <!-- FLASH MESSAGES -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="flash {{ category }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <form action="/predict" method="POST">
+
+            <input name="Age" placeholder="Age">
+            <input name="Task_Frequency_Daily" placeholder="Task Frequency Daily">
+            <input name="GPA_Baseline" placeholder="GPA Baseline">
+            <input name="Time_Saved_Hours_Weekly" placeholder="Time Saved Hours Weekly">
+            <input name="Career_Confidence_Score" placeholder="Career Confidence Score">
+
+            <button type="submit">Predict</button>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
